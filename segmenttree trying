@@ -1,0 +1,66 @@
+'''
+
+                            Online Python Interpreter.
+                Code, Compile, Run and Debug python program online.
+Write your code in this editor and press "Run" button to execute it.
+
+'''
+class node:
+    def __init__(self,data):
+        self.data=data
+        self.left=None
+        self.right=None
+        self.start=None
+        self.end=None
+
+class hello:
+    
+    def __init__(self,arr):
+        print(arr,sum(arr))
+        self.n=node(sum(arr))
+        print(self.n.data)
+    def segment_tree(self,arr,n,mid):
+        if len(arr)>1:
+            mid=len(arr)//2
+            n1=node(sum(arr[0:mid]))
+            n2=node(sum(arr[mid:]))
+            n.left=n1
+            n.right=n2
+            n.start=0
+            n.end=len(arr)-1
+            self.segment_left(arr[0:mid],n1,0)
+            self.segment_right(arr[mid:],n2,mid)
+            
+        else:
+            pass
+    def segment_left(self,arr,n,start):
+        if len(arr)>1:
+            mid=len(arr)//2
+            n1=node(sum(arr[0:mid]))
+            n2=node(sum(arr[mid:]))
+            n.left=n1
+            n.right=n2
+            n.start=0
+            n.end=len(arr)-1
+            self.segment_left(arr[0:mid],n1,mid+start)
+            self.segment_right(arr[mid:],n2,mid)
+    
+    def segment_right(self,arr,n,start):
+        if len(arr)>1:
+            mid=len(arr)//2
+            n1=node(sum(arr[0:mid]))
+            n2=node(sum(arr[mid:]))
+            n.left=n1
+            n.right=n2
+            n.start=start
+            n.end=start+len(arr)-1
+            self.segment_left(arr[0:mid],n1,mid)
+            self.segment_right(arr[mid:],n2,mid+start)
+        
+        
+arr=[1,2,3,4]
+h=hello([1,2,3,4])
+print(h.n.data)
+h.segment_tree(arr,h.n,0)
+print("Hello World")
+print(h.n.left.end)
