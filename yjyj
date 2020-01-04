@@ -1,0 +1,1 @@
+<xsl:if test="$broadetClass = 'Cash' and (not(count(*[local-name() = 'assoups']/*[local-name() = 'asGroup']) &gt; 0)) and (../../following-sibling::*[local-name() = 'asseoup'][1]/*[local-name() = 'broadAassName']/text() = 'Other')">
